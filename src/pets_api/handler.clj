@@ -1,8 +1,6 @@
 (ns pets-api.handler
-  (:require [compojure.core :refer :all]
-            [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
-            [ring.middleware.json :refer :all]
+  (:require [compojure.api.sweet :refer :all]
+            [ring.util.http-response :refer :all]
             [pets-api.pets :refer :all]
             [cheshire.core :as json]
             [pets-api.dao.pets :as dao]))
@@ -12,35 +10,41 @@
    :headers      {"Content-Type" "application/json; charset=utf-8"}
    :body         conteudo})
 
-(defroutes app-routes
-  (GET "/pets" []
-    (response (dao/get-todos)))
-
-  (POST "/pets" request
-    (response (dao/insere (:body request))))
-
-  (PUT "/pets/:id" request
-    (response
-        (let [id (get-in request [:params :id])
-              pet-encontrado (dao/get-by-id id)
-              pet-atualizado (:body request)]
-               (if pet-encontrado
-                  (do
-                    (dao/atualiza id pet-atualizado)
-                    pet-atualizado)
-                  {:message "Pet não encontrado"}))))
-
-  (DELETE "/pets/:id" [id]
-    (response (let [pet (dao/get-by-id id)]
-      (if pet
-        (do
-          (dao/deleta id)
-          pet)
-        {:message "Pet não encontrado"}))))
-
-  (route/not-found "Rota não encontrada"))
 
 (def app
-  (-> (wrap-defaults app-routes api-defaults)
-      (wrap-json-response)
-      (wrap-json-body {:keywords? true})))
+  (api
+    {:swagger
+     {:ui "/"
+      :spec "/swagger.json"
+      :data {:info {:title "Pets API"
+                    :description "Pets API for derivery data for apps and single page applications"}
+             :tags [{:name "PetsAPI", :description "APIs"}]
+             }}}
+
+    (context "/api" []
+             :tags ["api"]
+
+             (GET "/pets" []
+                  (ok {:result (dao/get-todos)}))
+
+             (POST "/pets" request
+                   (ok {:result (dao/insere (:body request))}))
+
+             (PUT "/pets/:id" request
+                  (ok
+                    (let [id (get-in request [:params :id])
+                          pet-encontrado (dao/get-by-id id)
+                          pet-atualizado (:body request)]
+                      (if pet-encontrado
+                        (do
+                          (dao/atualiza id pet-atualizado)
+                          {:result pet-atualizado})
+                        {:message "Pet não encontrado"}))))
+
+             (DELETE "/pets/:id" [id]
+                     (ok (let [pet (dao/get-by-id id)]
+                                 (if pet
+                                   (do
+                                     (dao/deleta id)
+                                     {:result pet})
+                                   {:message "Pet não encontrado"})))))))
