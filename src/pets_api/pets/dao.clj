@@ -1,11 +1,10 @@
-(ns pets-api.dao.pets
-  (:require [pets-api.database]
-            [korma.core :refer :all]
+(ns pets-api.pets.dao
+  (:require [korma.core :refer :all]
             [nano-id.core :refer :all]))
 
 (defentity pets)
 
-(defn get-todos []
+(defn get-all []
   (select pets))
 
 (defn get-by-id [id]

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="818c852f-fd21-4341-8aac-46c656392a69" name="Default Changelist" comment="" />
+    <list default="true" id="818c852f-fd21-4341-8aac-46c656392a69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pets_api/pets/handler.clj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pets_api/users/dao.clj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pets_api/users/handler.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pets-api.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.clj" beforeDir="false" afterPath="$PROJECT_DIR$/project.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pets_api/dao/pets.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/pets_api/pets/dao.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pets_api/handler.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/pets_api/handler.clj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +24,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1Wm6emyUhOkwpg70FX3P6OU56w3" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,6 +38,11 @@
     <property name="cursive.last.file.extension./home/guilherme/Documentos/Projetos/Clojure/pets-api/src" value="clj" />
     <property name="cursive.last.file.extension./home/guilherme/Documentos/Projetos/Clojure/pets-api/test" value="clj" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../Estudos/Clojure/clojure-brave" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pets_api/pets" />
+    </key>
   </component>
   <component name="RunManager" selected="Clojure Application.teste">
     <configuration default="true" type="ClojureREPL" factoryName="Local" activateToolWindowBeforeRun="false">
@@ -126,13 +143,17 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1320" height="247" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1580789303842" />
+    <state x="532" y="110" width="826" height="505" key="IDE.errors.dialog" timestamp="1584904704783">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="532" y="110" width="826" height="505" key="IDE.errors.dialog/0.0.1366.728@0.0.1366.728" timestamp="1584904704783" />
     <state x="688" y="160" key="run.anything.popup" timestamp="1579902576712">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="688" y="160" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1579902576712" />
-    <state x="322" y="49" width="720" height="678" key="search.everywhere.popup" timestamp="1580787840494">
+    <state x="322" y="49" width="720" height="678" key="search.everywhere.popup" timestamp="1585425361510">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="322" y="49" width="720" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1580787840494" />
+    <state x="322" y="49" width="720" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1585425361510" />
   </component>
 </project>
