@@ -1,32 +1,43 @@
 (ns pets-api.users.handler
-  (:require [ring.util.http-response :refer [ok not-found created]]
-            [compojure.api.sweet :refer [GET POST PUT DELETE]]
-            [pets-api.users.dao :as dao]))
+  (:require [ring.util.http-response :refer :all]
+            [compojure.api.sweet :refer :all]
+            [pets-api.users.dao :as dao]
+            [pets-api.users.user :refer [User]]
+            [schema.core :as s]))
 
 (def user-routes
   [(GET "/users" []
+     :return [User]
+     :summary "Return all users"
      (dao/get-all))
 
-   (POST "/users" request
-     (ok {:result (dao/insere (:body request))}))
+   (POST "/users" []
+         :return {:result User}
+         :body [user User]
+         :summary "Add a new user"
+     (ok {:result (dao/insere user)}))
 
-   (PUT "/users/:id" request
+   (PUT "/users/:id" []
+     :path-params [id :- s/Str]
+     :body [user User]
+     :summary "Update the user"
      (ok
-       (let [id (get-in request [:params :id])
-             user-encontrado (dao/get-by-id id)
-             user-atualizado (:body request)]
+       (let [user-encontrado (dao/get-by-id id)
+             user-atualizado user]
          (if user-encontrado
            (do
              (dao/atualiza id user-atualizado)
              {:result user-atualizado})
-           {:message "Usuário não encontrado"}))))
+           {:message "User not found"}))))
 
-   (DELETE "/users/:id" [id]
-     (ok (let [pet (dao/get-by-id id)]
-           (if pet
+   (DELETE "/users/:id" []
+     :path-params [id :- s/Str]
+     :summary "Delete the user"
+     (ok (let [user (dao/get-by-id id)]
+           (if user
              (do
                (dao/deleta id)
-               {:result pet})
-             {:message "Pet não encontrado"}))))])
+               {:result user})
+             {:message "User not found"}))))])
 
 

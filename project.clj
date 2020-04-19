@@ -5,6 +5,11 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [metosin/compojure-api "1.1.13"]
 
+                 [prismatic/schema "1.1.12"]
+
+                 ;crypt library
+                 [crypto-password "0.2.1"]
+
                  ; metrics library
                  [metrics-clojure "2.8.0"]
                  [metrics-clojure-ring "2.8.0"]
@@ -20,6 +25,7 @@
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring/ring-mock "0.3.2"]
                                   [midje "1.9.3"]]
-                   :plugins [[lein-midje "3.2.1"]]}
+                   :plugins [[lein-midje "3.2.1"]
+                             [lein-cloverage "1.0.13"]]}
              :uberjar {:aot :all}}
   :main pets-api.core)

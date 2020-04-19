@@ -3,8 +3,9 @@
             [compojure.api.sweet :refer [GET POST PUT DELETE]]
             [metrics.core :refer [default-registry]]
             [metrics.ring.expose :refer [render-metrics]]
-            [pets-api.pets.dao :as dao]))
-
+            [pets-api.pets.dao :as dao]
+            [pets-api.pets.pet :refer [Pet]]
+            [schema.core :as s]))
 
 (def pet-routes
   [(GET "/metrics" []
@@ -12,23 +13,32 @@
      (ok (render-metrics default-registry)))
 
    (GET "/pets" []
-     (ok {:result (dao/get-all)}))
+     :return [Pet]
+     :summary "Return all pets"
+     (ok (dao/get-all)))
 
-   (POST "/pets" request
-     (ok {:result (dao/insere (:body request))}))
+   (POST "/pets" []
+     :return {:result Pet}
+     :body [pet Pet]
+     :summary "Add a new Pet"
+     (ok {:result (dao/insere (:body pet))}))
 
-   (PUT "/pets/:id" request
+   (PUT "/pets/:id" []
+     :return {:result Pet}
+     :body [pet Pet]
+     :summary "Update a pet"
      (ok
-       (let [id (get-in request [:params :id])
-             pet-encontrado (dao/get-by-id id)
-             pet-atualizado (:body request)]
+       (let [id (:id pet)
+             pet-encontrado (dao/get-by-id id)]
          (if pet-encontrado
            (do
-             (dao/atualiza id pet-atualizado)
-             {:result pet-atualizado})
+             (dao/atualiza id pet)
+             {:result pet})
            {:message "Pet não encontrado"}))))
 
    (DELETE "/pets/:id" [id]
+     :path-params [id :- s/Str]
+     :summary "Delete a pet"
      (ok (let [pet (dao/get-by-id id)]
            (if pet
              (do

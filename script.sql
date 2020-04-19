@@ -1,11 +1,30 @@
 
 create database petsapi;
 
+use petsapi;
+
+CREATE TABLE customer(
+    id VARCHAR(15) primary key,
+    name VARCHAR(100),
+    address VARCHAR(100),
+    document VARCHAR(20),
+    plan VARCHAR(10),
+    dues NUMERIC(10)
+);
+
 CREATE TABLE pets(
     id VARCHAR(15) primary key,
-    nome VARCHAR(30),
-    bairro VARCHAR(30),
-    rua VARCHAR(30),
-    numero VARCHAR(5),
-    dono VARCHAR(50)
+    name VARCHAR(50),
+    breed VARCHAR(30),
+    age VARCHAR(30),
+    owner VARCHAR(15),
+    foreign key (owner) references customer(id)
+);
+
+CREATE TABLE user(
+    id VARCHAR(15) primary key,
+    name VARCHAR(50),
+    email VARCHAR(50),
+    username VARCHAR(20),
+    password VARCHAR(30)
 );

@@ -12,7 +12,8 @@
       {:swagger
        {:ui "/"
         :spec "/swagger.json"
-        :data {:info {:title "Pets API"
+        :data {:info {:version "1.0.0"
+                      :title "Pets API"
                       :description "Pets API for derivery data for apps and single page applications"}
                :tags [{:name "PetsAPI", :description "APIs"}]
                }}}
