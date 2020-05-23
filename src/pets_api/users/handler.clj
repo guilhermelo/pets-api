@@ -9,34 +9,34 @@
   [(GET "/users" []
      :return [User]
      :summary "Return all users"
-     (dao/get-all))
+     (dao/get-users))
 
    (POST "/users" []
          :return {:result User}
          :body [user User]
          :summary "Add a new user"
-     (ok {:result (dao/insere user)}))
+     (ok {:result (dao/insert-user user)}))
 
    (PUT "/users/:id" []
      :path-params [id :- s/Str]
      :body [user User]
      :summary "Update the user"
      (ok
-       (let [user-encontrado (dao/get-by-id id)
+       (let [user-encontrado (dao/get-user-by-id id)
              user-atualizado user]
          (if user-encontrado
            (do
-             (dao/atualiza id user-atualizado)
+             (dao/update-user id user-atualizado)
              {:result user-atualizado})
            {:message "User not found"}))))
 
    (DELETE "/users/:id" []
      :path-params [id :- s/Str]
      :summary "Delete the user"
-     (ok (let [user (dao/get-by-id id)]
+     (ok (let [user (dao/get-user-by-id id)]
            (if user
              (do
-               (dao/deleta id)
+               (dao/delete-user id)
                {:result user})
              {:message "User not found"}))))])
 
