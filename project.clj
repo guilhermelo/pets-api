@@ -16,7 +16,6 @@
 
                  [ring/ring-defaults "0.3.2"]
                  [ring/ring-json "0.5.0"]
-                 [nano-id "0.9.3"]
                  [korma "0.4.3"]
                  [mysql/mysql-connector-java "8.0.19"]]
 

@@ -1,20 +1,20 @@
 (ns pets-api.pets.dao
-  (:require [korma.core :refer :all]
-            [nano-id.core :refer :all]))
+  (:require [korma.core :as k]
+            [pets-api.util.uuid.uuid-generator :as uuid]))
 
-(defentity pets)
+(k/defentity pets)
 
 (defn get-all []
-  (select pets))
+  (k/select pets))
 
 (defn get-by-id [id]
   (first
-    (select pets
-            (where {:id [= id]}))))
+    (k/select pets
+            (k/where {:id [= id]}))))
 
 (defn insere [pet]
-  (insert pets
-    (values {:id (nano-id 15)
+  (k/insert pets
+    (k/values {:id (uuid/generate-uuid)
              :nome (:nome pet)
              :bairro (:bairro pet)
              :rua (:rua pet)
@@ -22,17 +22,17 @@
              :dono (:dono pet)})))
 
 (defn deleta [id]
-  (delete pets
-          (where {:id [= (.toString id)]})))
+  (k/delete pets
+          (k/where {:id [= (.toString id)]})))
 
 (defn atualiza [id pet]
-  (update pets
-          (set-fields {:nome (:nome pet)
+  (k/update pets
+          (k/set-fields {:nome (:nome pet)
                        :bairro (:bairro pet)
                        :rua (:rua pet)
                        :numero (:numero pet)
                        :dono (:dono pet)})
-          (where {:id [= id]})))
+          (k/where {:id [= id]})))
 
 
 
