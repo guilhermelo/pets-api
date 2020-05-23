@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="818c852f-fd21-4341-8aac-46c656392a69" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="818c852f-fd21-4341-8aac-46c656392a69" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/pets_api/users/service.clj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pets_api/util/uuid/uuid_generator.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Leiningen__nano_id_0_9_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pets-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pets-api.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.clj" beforeDir="false" afterPath="$PROJECT_DIR$/project.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/script.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pets_api/pets/dao.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/pets_api/pets/dao.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pets_api/users/dao.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/pets_api/users/dao.clj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pets_api/users/handler.clj" beforeDir="false" afterPath="$PROJECT_DIR$/src/pets_api/users/handler.clj" afterDir="false" />
+    </list>
+>>>>>>> fbeba1afdc5eb1d9915b5bf00da1afb4813c6eb9
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -3,7 +3,7 @@ create database petsapi;
 
 use petsapi;
 
-CREATE TABLE customer(
+CREATE TABLE customers(
     id VARCHAR(15) primary key,
     name VARCHAR(100),
     address VARCHAR(100),
@@ -21,7 +21,7 @@ CREATE TABLE pets(
     foreign key (owner) references customer(id)
 );
 
-CREATE TABLE user(
+CREATE TABLE users(
     id VARCHAR(15) primary key,
     name VARCHAR(50),
     email VARCHAR(50),
