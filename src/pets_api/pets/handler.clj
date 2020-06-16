@@ -1,29 +1,25 @@
 (ns pets-api.pets.handler
-  (:require [ring.util.http-response :refer [ok not-found created]]
+  (:require [ring.util.http-response :refer [ok]]
             [compojure.api.sweet :refer [GET POST PUT DELETE]]
-            [metrics.core :refer [default-registry]]
-            [metrics.ring.expose :refer [render-metrics]]
+            ;; [metrics.core :refer [default-registry]]
+            ;; [metrics.ring.expose :refer [render-metrics]]
             [pets-api.pets.dao :as dao]
             [pets-api.pets.pet :refer [Pet]]
             [schema.core :as s]))
 
 (def pet-routes
-  [(GET "/metrics" []
-     :summary "Application metrics"
-     (ok (render-metrics default-registry)))
-
-   (GET "/pets" []
+  [(GET "/" []
      :return [Pet]
      :summary "Return all pets"
      (ok (dao/get-all)))
 
-   (POST "/pets" []
+   (POST "/" []
      :return {:result Pet}
      :body [pet Pet]
      :summary "Add a new Pet"
      (ok {:result (dao/insere (:body pet))}))
 
-   (PUT "/pets/:id" []
+   (PUT "/:id" []
      :return {:result Pet}
      :body [pet Pet]
      :summary "Update a pet"
@@ -36,7 +32,7 @@
              {:result pet})
            {:message "Pet não encontrado"}))))
 
-   (DELETE "/pets/:id" [id]
+   (DELETE "/:id" [id]
      :path-params [id :- s/Str]
      :summary "Delete a pet"
      (ok (let [pet (dao/get-by-id id)]

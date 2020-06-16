@@ -1,7 +1,6 @@
 (ns pets-api.users.dao
   (:require [pets-api.database]
             [korma.core :as k]
-            [nano-id.core :refer :all]
             [schema.core :as s]
             [pets-api.users.user :refer [User]]
             [crypto.password.bcrypt :as bcrypt]
@@ -17,6 +16,10 @@
   (first
     (k/select users
             (k/where {:id [= id]}))))
+
+(s/defn get-user-by-username [username :- s/Str]
+  (first (k/select users
+                    (k/where {:username [= username]}))))
 
 (s/defn insert-user [user :- User]
   (k/insert users

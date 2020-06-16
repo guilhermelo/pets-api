@@ -6,5 +6,5 @@
    :name s/Str
    :address s/Str
    :document  s/Str
-   :plan [(s/enum :start :medium :premium)]
-   :dues s/Int})
+   :plan (s/enum :start :medium :premium)
+   :monthly-payment s/Int})

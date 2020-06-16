@@ -17,7 +17,11 @@
                  [ring/ring-defaults "0.3.2"]
                  [ring/ring-json "0.5.0"]
                  [korma "0.4.3"]
-                 [mysql/mysql-connector-java "8.0.19"]]
+                 [mysql/mysql-connector-java "8.0.19"]
+                 [buddy/buddy-auth "2.2.0"]
+                 [buddy/buddy-sign "3.1.0"]
+
+                 [clojure.java-time "0.3.2"]]
 
   :plugins [[lein-ring "0.12.5"]]
   :ring {:handler pets-api.handler/app}

@@ -1,5 +1,4 @@
-(ns pets-api.fake-db
-  (:require [nano-id.core :refer :all]))
+(ns pets-api.fake-db)
 
 (def pets (atom '()))
 
@@ -7,7 +6,7 @@
   @pets)
 
 (defn insere-pet! [pet]
-  (let [registro (assoc pet :id (nano-id))]
+  (let [registro (assoc pet :id "1")]
     (swap! pets conj registro)
     registro))
 
