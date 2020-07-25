@@ -41,3 +41,6 @@
                        :username (:username user)
                        :password (:password user)})
           (k/where {:id [= id]})))
+
+(s/defn limpa-tabela []
+  (k/delete users))

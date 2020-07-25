@@ -13,15 +13,22 @@
     (dissoc assoc-customer :monthly_payment)))
 
 (s/defn get-customers :- [Customer]
-        []
-        (let [saved-customers (k/select customers)]
-          (map dissociated saved-customers)))
+  []
+  (let [saved-customers (k/select customers)]
+    (map dissociated saved-customers)))
 
 (s/defn save [customer :- Customer]
-    (k/insert customers 
-              (k/values {:id (uuid/generate-uuid)
-                         :name (:name customer)
-                         :address (:address customer)
-                         :document (:document customer)
-                         :plan (name (:plan customer))
-                         :monthly_payment (:monthly-payment customer)})))
+  (k/insert customers
+            (k/values {:id (uuid/generate-uuid)
+                       :name (:name customer)
+                       :address (:address customer)
+                       :document (:document customer)
+                       :plan (name (:plan customer))
+                       :monthly_payment (:monthly-payment customer)})))
+
+(s/defn delete-customer [id :- s/Str]
+  (k/delete customers
+            (k/where {:id [= id]})))
+
+(s/defn limpa-tabela []
+  (k/delete customers))

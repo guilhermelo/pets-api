@@ -34,7 +34,7 @@
 
        (context "/users" []
          :tags ["users"]
-         :middleware [token-auth]
+        ;;  :middleware [token-auth]
          (apply routes user-routes))
         
         (context "/customers" []

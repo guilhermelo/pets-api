@@ -3,5 +3,5 @@
             [pets-api.pets :refer :all]))
 
 
-(fact "O Pet Cadastrado deve se chamar Tunico"
-      (:nome (first (pets))) => "Tunico")
+;; (fact "O Pet Cadastrado deve se chamar Tunico"
+;;       (:nome (first (pets))) => "Tunico")
