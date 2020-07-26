@@ -15,6 +15,7 @@
          :return {:result User}
          :body [user User]
          :summary "Add a new user"
+     (prn user)
      (ok {:result (dao/insert-user user)}))
 
    (PUT "/:id" []

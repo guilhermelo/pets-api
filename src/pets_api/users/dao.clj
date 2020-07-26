@@ -27,7 +27,8 @@
                    :name (:name user)
                    :email (:email user)
                    :username (:username user)
-                   :password (bcrypt/encrypt (:password user))})))
+                   :password (bcrypt/encrypt (:password user))}))
+        user)
 
 (s/defn delete-user [id :- s/Str]
   (k/delete users
