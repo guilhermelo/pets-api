@@ -1,10 +1,10 @@
-
+drop database petsapi;
 create database petsapi;
 
 use petsapi;
 
 CREATE TABLE customers(
-    id VARCHAR(15) primary key,
+    id VARCHAR(40) primary key,
     name VARCHAR(100),
     address VARCHAR(100),
     document VARCHAR(20),
@@ -13,12 +13,12 @@ CREATE TABLE customers(
 );
 
 CREATE TABLE pets(
-    id VARCHAR(15) primary key,
+    id VARCHAR(40) primary key,
     name VARCHAR(50),
-    breed VARCHAR(30),
+    race VARCHAR(30),
     age VARCHAR(30),
-    owner VARCHAR(15),
-    foreign key (owner) references customer(id)
+    owner VARCHAR(40),
+    foreign key (owner) references customers(id)
 );
 
 CREATE TABLE users(

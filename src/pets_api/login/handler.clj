@@ -15,4 +15,3 @@
      :summary "Login app"
      :return {:token s/Str}
      (service/login login))])
-

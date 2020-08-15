@@ -1,5 +1,5 @@
 (ns pets-api.login.service
-  (:require [pets-api.users.dao :as dao]
+  (:require [pets-api.users.repository :as repository]
             [ring.util.http-response :refer [ok, bad-request]]
             [buddy.sign.jwt :as jwt]
             [java-time :as t]
@@ -48,7 +48,7 @@
 (defn login [user]
   (let [username (:username user)
         password (:password user)
-        user (dao/get-user-by-username username)]
+        user (repository/get-user-by-username username)]
     (if (and password user)
       (if (bcrypt/check password (:password user))
         (ok {:token (generate-token username)})

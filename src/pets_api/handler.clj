@@ -36,11 +36,11 @@
          :tags ["users"]
         ;;  :middleware [token-auth]
          (apply routes user-routes))
-        
-        (context "/customers" []
-          :tags ["customers"]
-          :middleware [token-auth]
-          (apply routes customer-routes))
+
+       (context "/customers" []
+         :tags ["customers"]
+         :middleware [token-auth]
+         (apply routes customer-routes))
 
        (context "/metrics" []
          :tags ["metrics"]

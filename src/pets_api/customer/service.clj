@@ -1,10 +1,14 @@
 (ns pets-api.customer.service
-  (:require [pets-api.customer.dao :as dao]
-            [schema.core :as s]
+  (:require [schema.core :as s]
+            [pets-api.util.uuid.uuid-generator :refer [generate-uuid]]
+            [pets-api.customer.repository :as repository]
             [pets-api.customer.customer :refer [Customer]]))
 
-(defn get-customers []
-  (dao/get-customers))
+(defn get-customers [] :- [Customer]
+  (repository/get-customers))
 
 (s/defn save [customer :- Customer]
-  (dao/save customer))
+  (repository/save (assoc customer :id (generate-uuid))))
+
+(s/defn delete [id :- s/Str]
+  (repository/delete-customer id))

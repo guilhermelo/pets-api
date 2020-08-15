@@ -3,7 +3,7 @@
             [compojure.api.sweet :refer [GET POST PUT DELETE]]
             ;; [metrics.core :refer [default-registry]]
             ;; [metrics.ring.expose :refer [render-metrics]]
-            [pets-api.pets.dao :as dao]
+            [pets-api.pets.service :as service]
             [pets-api.pets.pet :refer [Pet]]
             [schema.core :as s]))
 
@@ -11,13 +11,13 @@
   [(GET "/" []
      :return [Pet]
      :summary "Return all pets"
-     (ok (dao/get-all)))
+     (ok (service/get-all)))
 
    (POST "/" []
      :return {:result Pet}
      :body [pet Pet]
      :summary "Add a new Pet"
-     (ok {:result (dao/insere (:body pet))}))
+     (ok {:result (service/insert (:body pet))}))
 
    (PUT "/:id" []
      :return {:result Pet}
@@ -25,19 +25,19 @@
      :summary "Update a pet"
      (ok
        (let [id (:id pet)
-             pet-encontrado (dao/get-by-id id)]
+             pet-encontrado (service/get-by-id id)]
          (if pet-encontrado
            (do
-             (dao/atualiza id pet)
+             (service/update id pet)
              {:result pet})
            {:message "Pet não encontrado"}))))
 
    (DELETE "/:id" [id]
      :path-params [id :- s/Str]
      :summary "Delete a pet"
-     (ok (let [pet (dao/get-by-id id)]
+     (ok (let [pet (service/get-by-id id)]
            (if pet
              (do
-               (dao/deleta id)
+               (service/delete id)
                {:result pet})
              {:message "Pet não encontrado"}))))])
