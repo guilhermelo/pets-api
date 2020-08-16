@@ -19,9 +19,41 @@
                                                  :plan :start
                                                  :monthly-payment 60}]
                                    (customer-repository/save customer)
-                                   (repository/insert-pet {:id (generate-uuid)
-                                                           :name "Tunico"
-                                                           :race "Shih Tzu"
-                                                           :age "1"
-                                                           :owner (:id customer)}))
-                                 (count (repository/get-all)) => 1)))
+                                   (repository/save {:id (generate-uuid)
+                                                     :name "Tunico"
+                                                     :race "Shih Tzu"
+                                                     :age "1"
+                                                     :owner (:id customer)}))
+                                 (count (repository/get-all)) => 1)
+
+                           (fact "Deve editar um registro"
+                                 (let [customer {:id (generate-uuid)
+                                                 :name "Guilherme"
+                                                 :address "Assis-SP"
+                                                 :document  "435345454-X"
+                                                 :plan :start
+                                                 :monthly-payment 60}
+                                       pet {:id (generate-uuid)
+                                            :name "Tunico"
+                                            :race "Shih Tzu"
+                                            :age "1"
+                                            :owner (:id customer)}
+                                       pet-edited-age (assoc pet :age "2")]
+                                   (repository/save pet)
+                                   (repository/edit (:id pet-edited-age) pet-edited-age)
+                                   (:age (repository/get-by-id (:id pet))) => "2"))
+                           
+                           (fact "Deve editar um registro"
+                                 (let [customer {:id (generate-uuid)
+                                                 :name "Guilherme"
+                                                 :address "Assis-SP"
+                                                 :document  "435345454-X"
+                                                 :plan :start
+                                                 :monthly-payment 60}
+                                       pet {:id (generate-uuid)
+                                            :name "Tunico"
+                                            :race "Shih Tzu"
+                                            :age "1"
+                                            :owner (:id customer)}]
+                                   (repository/delete (:id pet))
+                                   (count (repository/get-all)) => 0))))

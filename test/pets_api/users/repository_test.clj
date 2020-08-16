@@ -17,7 +17,7 @@
                                                    :password "joao123"})
                                  (count (repository/get-users)) => 1)
 
-                           (fact "Deve atualizar um registro"
+                           (fact "Deve editar um registro"
                                  (let [joao {:id (generate-uuid)
                                              :name "João"
                                              :email "joao@gmail.com"

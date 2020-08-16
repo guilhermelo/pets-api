@@ -8,12 +8,12 @@
 (defn get-by-id [id]
   (repository/get-by-id id))
 
-(defn insert [pet]
-  (repository/insert-pet (assoc pet :id (generate-uuid))))
+(defn save [pet]
+  (repository/save (assoc pet :id (generate-uuid))))
 
-(defn update [id pet]
-  (repository/atualiza id pet))
+(defn edit [id pet]
+  (repository/edit id pet))
 
 (defn delete [id]
-  (repository/deleta id))
+  (repository/delete id))
 

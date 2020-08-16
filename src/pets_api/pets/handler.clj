@@ -17,7 +17,7 @@
      :return {:result Pet}
      :body [pet Pet]
      :summary "Add a new Pet"
-     (ok {:result (service/insert (:body pet))}))
+     (ok {:result (service/save (:body pet))}))
 
    (PUT "/:id" []
      :return {:result Pet}
@@ -28,7 +28,7 @@
              pet-encontrado (service/get-by-id id)]
          (if pet-encontrado
            (do
-             (service/update id pet)
+             (service/edit id pet)
              {:result pet})
            {:message "Pet não encontrado"}))))
 

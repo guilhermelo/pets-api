@@ -14,8 +14,6 @@
                  [metrics-clojure "2.8.0"]
                  [metrics-clojure-ring "2.8.0"]
 
-                 [ring/ring-defaults "0.3.2"]
-                 [ring/ring-json "0.5.0"]
                  [korma "0.4.3"]
                  [mysql/mysql-connector-java "8.0.19"]
                  [buddy/buddy-auth "2.2.0"]

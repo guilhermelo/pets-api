@@ -2,9 +2,7 @@
   (:require [pets-api.database]
             [korma.core :as k]
             [schema.core :as s]
-            [pets-api.customer.customer :refer [Customer]]
-            [pets-api.util.uuid.uuid-generator :as uuid]))
-
+            [pets-api.customer.customer :refer [Customer]]))
 
 (k/defentity customers)
 

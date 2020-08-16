@@ -14,8 +14,7 @@
    (k/select pets
              (k/where {:id [= id]}))))
 
-(s/defn insert-pet [pet :- Pet]
-  (prn pet)
+(s/defn save [pet :- Pet]
   (k/insert pets
             (k/values {:id (:id pet)
                        :name (:name pet)
@@ -23,11 +22,11 @@
                        :age (:age pet)
                        :owner (:id (:owner pet))})))
 
-(s/defn deleta [id :- s/Str]
+(s/defn delete [id :- s/Str]
   (k/delete pets
             (k/where {:id [= (.toString id)]})))
 
-(defn atualiza [id pet]
+(s/defn edit [id :- s/Str, pet :- Pet]
   (k/update pets
             (k/set-fields {:name (:name pet)
                            :race (:race pet)
