@@ -11,4 +11,6 @@
   (repository/save (assoc customer :id (generate-uuid))))
 
 (s/defn delete [id :- s/Str]
+  (when (or (nil? id) (= "" id)) 
+    (throw (ex-info "id is invalid" {:id id})))
   (repository/delete-customer id))
