@@ -28,3 +28,12 @@ CREATE TABLE users(
     username VARCHAR(20),
     password VARCHAR(100)
 );
+
+CREATE TABLE activities(
+    id VARCHAR(40) primary key,
+    description VARCHAR(100),
+    date DATETIME,
+    pet VARCHAR(40),
+    type VARCHAR(20),
+    foreign key (pet) references pets(id)
+);

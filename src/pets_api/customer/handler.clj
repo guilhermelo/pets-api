@@ -8,10 +8,10 @@
   [(GET "/" []
      :return [Customer]
      :summary "Return all customers"
-     (ok (service/get-customers)))
+     (ok (service/get-all)))
 
    (POST "/" []
-    ;;  :return {:result Customer}
+     :return {:result Customer}
      :body [customer Customer]
      :summary "Add a new customer"
      (service/save customer)

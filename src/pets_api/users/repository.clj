@@ -3,11 +3,12 @@
             [korma.core :as k]
             [schema.core :as s]
             [pets-api.users.user :refer [User]]
-            [crypto.password.bcrypt :as bcrypt]))
+            [crypto.password.bcrypt :as bcrypt])
+  )
 
 (k/defentity users)
 
-(s/defn get-users :- [User]
+(s/defn get-all :- [User]
   []
   (k/select users))
 
@@ -20,7 +21,7 @@
   (first (k/select users
                    (k/where {:username [= username]}))))
 
-(s/defn insert-user [user :- User]
+(s/defn save [user :- User]
   (k/insert users
             (k/values {:id (:id user)
                        :name (:name user)
@@ -28,11 +29,11 @@
                        :username (:username user)
                        :password (bcrypt/encrypt (:password user))})))
 
-(s/defn delete-user [id :- s/Str]
+(s/defn delete [id :- s/Str]
   (k/delete users
             (k/where {:id (.toString id)})))
 
-(s/defn update-user [id :- s/Str, user :- User]
+(s/defn edit [id :- s/Str, user :- User]
   (k/update users
             (k/set-fields {:id (:id user)
                            :name (:name user)

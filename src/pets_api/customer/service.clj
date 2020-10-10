@@ -4,8 +4,8 @@
             [pets-api.customer.repository :as repository]
             [pets-api.customer.customer :refer [Customer]]))
 
-(defn get-customers [] :- [Customer]
-  (repository/get-customers))
+(defn get-all [] :- [Customer]
+  (repository/get-all))
 
 (s/defn save [customer :- Customer]
   (repository/save (assoc customer :id (generate-uuid))))
@@ -13,4 +13,4 @@
 (s/defn delete [id :- s/Str]
   (when (or (nil? id) (= "" id)) 
     (throw (ex-info "id is invalid" {:id id})))
-  (repository/delete-customer id))
+  (repository/delete id))

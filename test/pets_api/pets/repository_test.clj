@@ -42,7 +42,7 @@
                                    (repository/save pet)
                                    (repository/edit (:id pet-edited-age) pet-edited-age)
                                    (:age (repository/get-by-id (:id pet))) => "2"))
-                           
+
                            (fact "Deve editar um registro"
                                  (let [customer {:id (generate-uuid)
                                                  :name "Guilherme"

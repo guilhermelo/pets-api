@@ -7,7 +7,7 @@
        (against-background [(before :facts (repository/limpa-tabela))]
 
                            (fact "Não deve haver registros"
-                                 (count (repository/get-customers)) => 0)
+                                 (count (repository/get-all)) => 0)
 
                            (fact "Deve salvar um cliente"
                                  (let [customer {:id (generate-uuid)
@@ -17,7 +17,7 @@
                                                  :plan :start
                                                  :monthly-payment 60}]
                                    (repository/save customer)
-                                   (count (repository/get-customers)) => 1))
+                                   (count (repository/get-all)) => 1))
 
                            (fact "Deve excluir um registro"
                                  (let [customer {:id (generate-uuid)
@@ -27,5 +27,5 @@
                                                  :plan :medium
                                                  :monthly-payment 60}]
                                    (repository/save customer)
-                                   (repository/delete-customer (:id customer))
-                                   (count (repository/get-customers)) => 0))))
+                                   (repository/delete (:id customer))
+                                   (count (repository/get-all)) => 0))))

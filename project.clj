@@ -28,5 +28,4 @@
                                   [midje "1.9.3"]]
                    :plugins [[lein-midje "3.2.1"]
                              [lein-cloverage "1.0.13"]]}
-             :uberjar {:aot :all}}
-  :main pets-api.core)
+             :uberjar {:aot :all}})

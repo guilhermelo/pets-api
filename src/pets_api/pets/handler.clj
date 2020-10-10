@@ -1,11 +1,8 @@
 (ns pets-api.pets.handler
   (:require [ring.util.http-response :refer [ok]]
             [compojure.api.sweet :refer [GET POST PUT DELETE]]
-            ;; [metrics.core :refer [default-registry]]
-            ;; [metrics.ring.expose :refer [render-metrics]]
             [pets-api.pets.service :as service]
-            [pets-api.pets.pet :refer [Pet]]
-            [schema.core :as s]))
+            [pets-api.pets.pet :refer [Pet]]))
 
 (def pet-routes
   [(GET "/" []
@@ -33,7 +30,7 @@
            {:message "Pet não encontrado"}))))
 
    (DELETE "/:id" [id]
-     :path-params [id :- s/Str]
+     :path-params [id]
      :summary "Delete a pet"
      (ok (let [pet (service/get-by-id id)]
            (if pet

@@ -10,7 +10,7 @@
   (-> (assoc customer :monthly-payment (:monthly_payment customer))
       (dissoc :monthly_payment)))
 
-(s/defn get-customers :- [Customer]
+(s/defn get-all :- [Customer]
   []
   (let [saved-customers (k/select customers)]
     (map dissociated saved-customers)))
@@ -24,7 +24,7 @@
                        :plan (name (:plan customer))
                        :monthly_payment (:monthly-payment customer)})))
 
-(s/defn delete-customer [id :- s/Str]
+(s/defn delete [id :- s/Str]
   (k/delete customers
             (k/where {:id [= id]})))
 
